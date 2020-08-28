@@ -18,15 +18,17 @@
       - vlc
   tasks:
     - name: Create plex user
+      become: yes
       user:
         name: plex
+        shell: /bin/zsh
     - name: Install commands
       package:
-        name: "{{ commands }}"
+        name: '{{ commands }}'
         state: present
     - name: Install applications
       package:
-        name: "{{ applications }}"
+        name: '{{ applications }}'
         state: latest
         use: homebrew_cask
     - name: Link AACS library for Handbrake
@@ -43,10 +45,20 @@
   hosts:
     - puppet.local
   tasks:
+    - name: Ensure Ansible can be run on Windows machines from shell
+      lineinfile:
+        path: ~/.zshenv
+        regexp: '^OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
+        line: OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+    - name: Ensure Ansible can be run on Windows machines from cron
+      cron:
+        env: yes
+        name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
+        job: 'YES'
     - name: Ensure Ansible runs every hour
       cron:
-        name: Run Plex playbook
+        name: ~/ansible/plex.yml
         user: plex
-        job: ansible-playbook ~/ansible/plex.yml 2&>1 /dev/null
-        hour: "*"
+        job: ansible-playbook ~/ansible/plex.yml >> /dev/null 2>&1
+        minute: '0'
         state: present
