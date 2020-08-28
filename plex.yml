@@ -49,8 +49,8 @@
       lineinfile:
         path: ~/.zshenv
         create: yes
-        regexp: '^OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
-        line: OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+        regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
+        line: export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
         state: present
     - name: Ensure Ansible can be run on Windows machines from cron
       cron:
