@@ -1,0 +1,52 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Plex machine
+  hosts:
+    - puppet.local
+  remote_user: plex
+  vars:
+    commands:
+      - libaacs
+      - libbdplus
+      - libbluray
+      - libdvdcss
+    applications:
+      - handbrake
+      - makemkv
+      - plex
+      - plex-media-server
+      - vlc
+  tasks:
+    - name: Create plex user
+      user:
+        name: plex
+    - name: Install commands
+      package:
+        name: "{{ commands }}"
+        state: present
+    - name: Install applications
+      package:
+        name: "{{ applications }}"
+        state: latest
+        use: homebrew_cask
+    - name: Link AACS library for Handbrake
+      file:
+        src: /Applications/MakeMKV.app/Contents/lib/libmmbd_new.dylib
+        dest: ~/lib/libaacs.dylib
+        state: link
+    - name: Link BBD+ library for Handbrake
+      file:
+        src: /Applications/MakeMKV.app/Contents/lib/libmmbd_new.dylib
+        dest: ~/lib/libbdplus.dylib
+        state: link
+- name: Ansible
+  hosts:
+    - puppet.local
+  tasks:
+    - name: Ensure Ansible runs every hour
+      cron:
+        name: Run Plex playbook
+        user: plex
+        job: ansible-playbook ~/ansible/plex.yml 2&>1 /dev/null
+        hour: "*"
+        state: present
