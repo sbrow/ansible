@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Plex machine
+- name: Setup Plex Media Server
   hosts:
     - puppet.local
   remote_user: plex
@@ -48,8 +48,10 @@
     - name: Ensure Ansible can be run on Windows machines from shell
       lineinfile:
         path: ~/.zshenv
+        create: yes
         regexp: '^OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
         line: OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+        state: present
     - name: Ensure Ansible can be run on Windows machines from cron
       cron:
         env: yes
