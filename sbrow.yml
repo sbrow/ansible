@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Spencer's configuration
+- name: Set up Spencer's computer
   hosts:
     - wafflemaker.local
   user: sbrow
@@ -37,11 +37,11 @@
         force: no
     - name: Install Commands
       package:
-        name: "{{ commands }}"
+        name: '{{ commands }}'
         state: latest
     - name: Install Applications
       package:
-        name: "{{ applications }}"
+        name: '{{ applications }}'
         state: latest
         use: homebrew_cask
 - name: Setup GPG Suite
