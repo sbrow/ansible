@@ -22,6 +22,10 @@
       user:
         name: plex
         shell: /bin/zsh
+    - name: Tap loginitems
+      homebrew_tap:
+        name: OJFord/formulae
+        state: absent
     - name: Install commands
       package:
         name: '{{ commands }}'
@@ -41,6 +45,11 @@
         src: /Applications/MakeMKV.app/Contents/lib/libmmbd_new.dylib
         dest: ~/lib/libbdplus.dylib
         state: link
+    - name: Add Plex Media Server to the Login Items and hide it.
+      command:
+        cmd: 'osascript -e ''tell application "System Events" to make login item at end with properties {name: "Plex Media Server",path:"/Applications/Plex Media Server.app", hidden:true}'''
+      tags:
+        - butt
 - name: Ansible
   hosts:
     - puppet.local
@@ -48,10 +57,10 @@
     - name: Ensure Ansible can be run on Windows machines from shell
       lineinfile:
         path: ~/.zshenv
-        create: yes
-        regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
         line: export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
         state: present
+        create: yes
+        regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
     - name: Ensure Ansible can be run on Windows machines from cron
       cron:
         env: yes
