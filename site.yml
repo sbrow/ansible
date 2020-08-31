@@ -1,0 +1,8 @@
+#!/usr/local/bin/ansible-playbook
+---
+- name: Setup puppet
+  import_playbook: plex.yml
+- name: Setup Durandal
+  import_playbook: windows.yml
+- name: Setup Wafflemaker
+  import_playbook: sbrow.yml
