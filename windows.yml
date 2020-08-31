@@ -19,6 +19,11 @@
       win_chocolatey:
         name: "{{ applications }}"
         state: latest
+    - name: Install CleanMyPC
+      win_package:
+        path: https://dl.devmate.com/com.macpaw.cmpc/CleanMyPC.exe?cid=611798819.1539925444
+        product_id: "{90385FF3-6721-4DCD-AD11-FEBA397F4FE9}_is1"
+        state: present
 - name: Setup AutoHotKey
   hosts:
     - durandal.local
