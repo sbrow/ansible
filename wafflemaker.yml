@@ -9,7 +9,6 @@
       - ansible
       - ansible-lint
       - parallel
-      - vagrant
       - watch
       - zplug
     applications:
@@ -22,6 +21,7 @@
       - skype
       - steam
       - teamviewer
+      - vagrant
       - virtualbox
       - visual-studio-code
   tasks:
