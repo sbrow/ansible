@@ -9,6 +9,7 @@
       - ansible
       - ansible-lint
       - parallel
+      - vagrant
       - watch
       - zplug
     applications:
