@@ -3,6 +3,6 @@
 - name: Setup plex
   import_playbook: plex.yml
 - name: Setup Durandal
-  import_playbook: windows.yml
+  import_playbook: durandal.yml
 - name: Setup Wafflemaker
-  import_playbook: sbrow.yml
+  import_playbook: wafflemaker.yml
