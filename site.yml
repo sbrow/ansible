@@ -1,6 +1,6 @@
 #!/usr/local/bin/ansible-playbook
 ---
-- name: Setup puppet
+- name: Setup plex
   import_playbook: plex.yml
 - name: Setup Durandal
   import_playbook: windows.yml

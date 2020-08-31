@@ -2,7 +2,7 @@
 ---
 - name: Setup Plex Media Server
   hosts:
-    - puppet.local
+    - plex.local
   remote_user: plex
   vars:
     commands:
@@ -50,9 +50,9 @@
         cmd: 'osascript -e ''tell application "System Events" to make login item at end with properties {name: "Plex Media Server",path:"/Applications/Plex Media Server.app", hidden:true}'''
       tags:
         - butt
-- name: Ansible
+- name: Setup Ansible
   hosts:
-    - puppet.local
+    - plex.local
   tasks:
     - name: Ensure Ansible can be run on Windows machines from shell
       lineinfile:
