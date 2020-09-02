@@ -1,0 +1,8 @@
+---
+- name: send email
+  mail:
+    to: '{{ ansible_user }}'
+    host: '{{ ansible_host }}'
+    subject: An Ansible run triggered a change on your machine
+    body: '{{ changed.msg }}'
+    charset: ascii

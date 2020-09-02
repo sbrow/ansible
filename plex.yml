@@ -22,7 +22,7 @@
       user:
         name: plex
         shell: /bin/zsh
-    - name: Tap loginitems
+    - name: Untap loginitems
       homebrew_tap:
         name: OJFord/formulae
         state: absent
@@ -54,22 +54,29 @@
   hosts:
     - plex.local
   tasks:
-    - name: Ensure Ansible can be run on Windows machines from shell
+    - name: Ensure Ansible can be run on on demand on Windows
       lineinfile:
         path: ~/.zshenv
         line: export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
         state: present
         create: yes
         regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
-    - name: Ensure Ansible can be run on Windows machines from cron
+    - name: Ensure Ansible run periodically on Windows
       cron:
         env: yes
         name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
         job: 'YES'
-    - name: Ensure Ansible runs every hour
+    - name: Make sure Ansible doesn't run plex.yml on cron.
       cron:
         name: ~/ansible/plex.yml
         user: plex
         job: ansible-playbook ~/ansible/plex.yml >> /dev/null 2>&1
+        minute: '0'
+        state: absent
+    - name: Ensure Ansible runs every hour
+      cron:
+        name: ~/ansible/site.yml
+        user: plex
+        job: ansible-playbook ~/ansible/site.yml >> /dev/null 2>&1
         minute: '0'
         state: present
