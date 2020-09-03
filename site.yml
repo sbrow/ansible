@@ -1,8 +1,7 @@
 #!/usr/local/bin/ansible-playbook
 ---
 - hosts: all
-  roles:
-    - common
+  import_playbook: common.yml
 - name: Setup plex
   import_playbook: plex.yml
 - name: Setup Durandal
