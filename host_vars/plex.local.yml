@@ -1,0 +1,11 @@
+commands:
+  - libaacs
+  - libbdplus
+  - libbluray
+  - libdvdcss
+applications:
+  - handbrake
+  - makemkv
+  - plex
+  - plex-media-server
+  - vlc

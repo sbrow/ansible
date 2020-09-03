@@ -61,7 +61,15 @@
         state: present
         create: yes
         regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
-    - name: Ensure Ansible run periodically on Windows
+    - name: Use smart gathering in ansible
+      lineinfile:
+        path: /etc/ansible/ansible.config
+        line: gathering = smart
+        state: present
+        create: yes
+        regexp: '#?gathering = (smart|implicit|explicit)'
+      become: yes
+    - name: Ensure Ansible can run periodically on Windows
       cron:
         env: yes
         name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY

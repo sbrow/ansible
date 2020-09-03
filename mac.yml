@@ -1,0 +1,35 @@
+#!/usr/local/bin/ansible-playbook
+---
+- hosts:
+    # - macs
+    - localhost
+  tasks:
+    - name: Install lxml depenedency (required by xml module)
+      pip:
+        name: lxml
+        state: present
+    - name: Ensure postfix daemon won't shut down after 60 seconds.
+      xml:
+        path: /System/Library/LaunchDaemons/com.apple.postfix.master.plist
+        xpath: dict/array
+        set_children:
+          - string: master
+      become: yes
+      notify:
+        - restart postfix
+    - name: Ensure postfix process will stay alive.
+      xml:
+        path: /System/Library/LaunchDaemons/com.apple.postfix.master.plist
+        xpath: dict
+        add_children:
+          - key: KeepAlive
+          - true
+      become: yes
+      notify:
+        - restart postfix
+  handlers:
+    - name: restart postfix
+      debug:
+        msg: Restarting...
+      # sudo launchctl unload /System/Library/LaunchDaemons/org.postfix.master.plist
+      # sudo launchctl load /System/Library/LaunchDaemons/org.postfix.master.plist

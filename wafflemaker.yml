@@ -4,26 +4,6 @@
   hosts:
     - wafflemaker.local
   user: sbrow
-  vars:
-    commands:
-      - ansible
-      - ansible-lint
-      - parallel
-      - watch
-      - zplug
-    applications:
-      - cleanmymac # provider=appdmg source = 'https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg'
-      - discord
-      - firefox
-      - flux
-      - joplin
-      - lastpass
-      - skype
-      - steam
-      - teamviewer
-      - vagrant
-      - virtualbox
-      - visual-studio-code
   tasks:
     - name: Create user
       user:
@@ -36,15 +16,6 @@
         src: ./files/.zshrc
         dest: ~/.zshrc
         force: no
-    - name: Install Commands
-      package:
-        name: '{{ commands }}'
-        state: latest
-    - name: Install Applications
-      package:
-        name: '{{ applications }}'
-        state: latest
-        use: homebrew_cask
 - name: Setup GPG Suite
   hosts:
     - wafflemaker.local

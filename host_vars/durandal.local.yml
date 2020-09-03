@@ -1,0 +1,9 @@
+applications:
+  - aquasnap
+  - autohotkey
+  # - cleanmypc Installed separately
+  - discord
+  - firefox
+  - f.lux
+  - joplin
+  - vscode
