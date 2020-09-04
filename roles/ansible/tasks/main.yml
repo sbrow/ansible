@@ -16,6 +16,7 @@
   become: yes
 - name: Ensure Ansible can run periodically on Windows
   cron:
+    user: root
     env: yes
     name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
     job: 'YES'
@@ -33,11 +34,11 @@
     job: ansible-playbook ~/ansible/site.yml >> /dev/null 2>&1
     minute: '0'
     state: absent
-- name: Make sure Ansible runs every hour
+- name: Make sure Ansible runs every hour during the day
   cron:
     name: /etc/ansible/site.yml
-    user: plex
+    user: root
     job: ansible-playbook /etc/ansible/site.yml >> /dev/null 2>&1
     minute: '0'
+    hour: 7 - 19
     state: present
-  become: yes
