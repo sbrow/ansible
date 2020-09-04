@@ -38,7 +38,7 @@
 
       # Then, source plugins and add commands to $PATH
       zplug load \
-      --verbose
+      # --verbose
     marker: '# {mark} ANSIBLE MANAGED BLOCK'
 - name: Load 'oh-my-zsh' plugins
   lineinfile:
