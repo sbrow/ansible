@@ -29,13 +29,6 @@
     job: 'YES'
     state: absent
   become: yes
-- name: Ensure Ansible can run periodically on Windows
-  cron:
-    user: root
-    env: yes
-    name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
-    job: 'YES'
-    state: present
 - name: Make sure Ansible doesn't run plex.yml on cron
   cron:
     name: ~/ansible/plex.yml
