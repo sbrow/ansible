@@ -1,0 +1,13 @@
+---
+- name: Create 'curlx' zsh alias for clearing the cache on Vertical Axion site page
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'alias curlx='
+    line: "alias curlx=\"curl -H 'X-Cache-Update: 1'\""
+    state: present
+- name: Create 'wgetx' zsh alias for clearing the cache on an entire Vertical Axion site
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'alias wgetx='
+    line: "alias wgetx=\"wget --header='X-Cache-Update: 1' -r --spider\""
+    state: present
