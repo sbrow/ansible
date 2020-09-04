@@ -35,9 +35,9 @@
     state: absent
 - name: Make sure Ansible runs every hour
   cron:
-    become: yes
     name: /etc/ansible/site.yml
     user: plex
     job: ansible-playbook /etc/ansible/site.yml >> /dev/null 2>&1
     minute: '0'
     state: present
+  become: yes
