@@ -1,0 +1,57 @@
+---
+- name: Don't use package managed version of zplug
+  package:
+    name: zplug
+    state: absent
+- name: Install zplug from github.
+  shell:
+    cmd: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    creates: ~/.zplug/
+- name: source zplug in ~/.zshrc
+  lineinfile:
+    path: ~/.zshrc
+    create: yes
+    regexp: 'source ~/\.zplug/init\.zsh'
+    state: present
+    insertbefore: BOF
+    line: "source ~/.zplug/init.zsh\n"
+- name: Allow zplug to manage itself
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'zplug (''zplug/zplug''|"zplug/zplug")'
+    state: present
+    insertafter: '(?<=source ~/.zplug/init.zsh)^$'
+    line: "zplug 'zplug/zplug', hook-build:'zplug --self-manage'\n"
+- name: Install and load zsh plugins in ~/.zshrc
+  blockinfile:
+    path: ~/.zshrc
+    state: present
+    insertafter: EOF
+    block: |
+      # Install plugins if there are plugins that have not been installed
+      if ! zplug check --verbose; then
+          printf "Install? [y/N]: "
+          if read -q; then
+              echo; zplug install
+          fi
+      fi
+
+      # Then, source plugins and add commands to $PATH
+      zplug load \
+      --verbose
+    marker: '# {mark} ANSIBLE MANAGED BLOCK'
+- name: Load 'oh-my-zsh' plugins
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'zplug ([''"]{{ item }}[''"])'
+    state: present
+    insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
+    line: "zplug '{{ item }}', from:oh-my-zsh\n"
+  loop: '{{ oh_my_zsh_plugins }}'
+- name: Load a zsh theme if there isn't one already
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'zplug .*, as:theme'
+    state: present
+    insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
+    line: "zplug 'themes/afowler', as:theme, from:oh-my-zsh, on:'plugins/vi_mode'\n"

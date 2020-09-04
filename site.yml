@@ -1,10 +1,15 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Run common setup
-  import_playbook: common.yml
-- name: Setup plex
-  import_playbook: plex.yml
-- name: Setup Durandal
-  import_playbook: durandal.yml
-- name: Setup Wafflemaker
-  import_playbook: wafflemaker.yml
+- hosts: all
+  roles:
+    - common
+- hosts: plex
+  roles:
+    - plex
+    - ansible
+- hosts: durandal
+  tasks:
+    - import_tasks: durandal.yml
+- hosts: wafflemaker
+  tasks:
+    - import_tasks: wafflemaker.yml

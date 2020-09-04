@@ -1,35 +1,8 @@
-#!/usr/bin/env ansible-playbook
 ---
-# TODO: Hmail
-- name: Setup HMail server.
-  hosts:
-    - durandal.local
-- name: Setup Desktop
-  hosts:
-    - durandal.local
-  user: Spencer
-  tasks:
-    - name: Install CleanMyPC
-      win_package:
-        path: https://dl.devmate.com/com.macpaw.cmpc/CleanMyPC.exe?cid=611798819.1539925444
-        product_id: '{90385FF3-6721-4DCD-AD11-FEBA397F4FE9}_is1'
-        state: present
-- name: Setup AutoHotKey
-  hosts:
-    - durandal.local
-  user: Spencer
-  vars:
-    home: C:\Users\Spencer
-  tasks:
-    - name: Install AHK scripts
-      tags:
-        - y
-      win_copy:
-        src: files/ahk/
-        dest: '{{ home }}\AHKScripts'
-    - name: Run main.ahk on startup
-      win_shortcut:
-        src: '{{ home }}\AHKScripts\main.ahk'
-        directory: '{{ home }}\AHKScripts'
-        dest: '{{ home }}\\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\main.lnk'
-        icon: '{{ home }}\AHKScripts\main.ahk,0'
+- name: Install CleanMyPC
+  win_package:
+    path: https://dl.devmate.com/com.macpaw.cmpc/CleanMyPC.exe?cid=611798819.1539925444
+    product_id: '{90385FF3-6721-4DCD-AD11-FEBA397F4FE9}_is1'
+    state: present
+- name: Setup HMail server # TODO: HMail
+  debug:

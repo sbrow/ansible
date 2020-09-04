@@ -1,0 +1,35 @@
+---
+- name: Ensure Ansible can be run on on demand on Windows
+  lineinfile:
+    path: ~/.zshenv
+    line: export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+    state: present
+    create: yes
+    regexp: '^(export )?OBJC_DISABLE_INITIALIZE_FORK_SAFETY='
+- name: Use smart gathering in ansible
+  lineinfile:
+    path: /etc/ansible/ansible.config
+    line: gathering = smart
+    state: present
+    create: yes
+    regexp: '#?gathering = (smart|implicit|explicit)'
+  become: yes
+- name: Ensure Ansible can run periodically on Windows
+  cron:
+    env: yes
+    name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
+    job: 'YES'
+- name: Make sure Ansible doesn't run plex.yml on cron.
+  cron:
+    name: ~/ansible/plex.yml
+    user: plex
+    job: ansible-playbook ~/ansible/plex.yml >> /dev/null 2>&1
+    minute: '0'
+    state: absent
+- name: Ensure Ansible runs every hour
+  cron:
+    name: ~/ansible/site.yml
+    user: plex
+    job: ansible-playbook ~/ansible/site.yml >> /dev/null 2>&1
+    minute: '0'
+    state: present

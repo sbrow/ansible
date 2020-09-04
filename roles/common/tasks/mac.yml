@@ -1,0 +1,9 @@
+---
+- name: Install commands on Macs
+  homebrew:
+    name: '{{ commands }}'
+    state: latest
+- name: Install applications on Macs
+  homebrew_cask:
+    name: '{{ applications }}'
+    state: latest
