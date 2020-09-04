@@ -27,7 +27,7 @@
     env: yes
     name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY
     job: 'YES'
-    state: absent
+    state: present
   become: yes
 - name: Make sure Ansible doesn't run plex.yml on cron
   cron:
