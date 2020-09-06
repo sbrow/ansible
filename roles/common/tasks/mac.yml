@@ -3,6 +3,7 @@
   homebrew:
     name: '{{ commands }}'
     state: latest
+    update_homebrew: yes
 - name: Install applications on Macs
   homebrew_cask:
     name: '{{ applications }}'
