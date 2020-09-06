@@ -55,3 +55,25 @@
     state: present
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
     line: "zplug 'themes/afowler', as:theme, from:oh-my-zsh, on:'plugins/vi_mode'\n"
+- name: Track zsh history
+  lineinfile:
+    path: ~/.zshenv
+    regexp: HISTSIZE=
+    line: HISTSIZE=1000
+    state: present
+    create: yes
+- name: Save zsh history
+  lineinfile:
+    path: ~/.zshenv
+    regexp: SAVEHIST=
+    line: SAVEHIST=1000
+    insertafter: HISTSIZE=
+    state: present
+- name: Set zsh history file location
+  lineinfile:
+    path: ~/.zshenv
+    regexp: HISTFILE=
+    line: HISTFILE=~/.history
+    insertafter: SAVEHIST=
+    state: present
+# TODO:  setopt HIST_IGNORE_DUPS
