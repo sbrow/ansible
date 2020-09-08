@@ -1,5 +1,8 @@
 #!/usr/bin/env ansible-playbook
 ---
+- hosts: wafflemaker
+  tasks:
+    - import_playbook: wafflemaker.yml
 - hosts: all
   roles:
     - common
@@ -9,7 +12,4 @@
     - ansible
 - hosts: durandal
   tasks:
-    - import_tasks: durandal.yml
-- hosts: wafflemaker
-  tasks:
-    - import_tasks: wafflemaker.yml
+    - import_playbook: durandal.yml

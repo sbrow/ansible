@@ -1,26 +1,32 @@
+#/usr/bin/env ansible-playbook
 ---
-- name: Create user
-  user:
-    name: sbrow
-    comment: Spencer Brower
-    shell: /bin/zsh
-    # group: 20
-- name: Configure ~/.zshrc
-  copy:
-    src: ./roles/common/files/.zshrc
-    dest: ~/.zshrc
-    force: no
-- name: Install GPG Suite
-  package:
-    name: gpg-suite
-    state: latest
-    use: homebrew_cask
-- name: Configure GPG Suite
-  copy:
-    content: |
-      pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
-      enable-ssh-support
-      default-cache-ttl 600
-      max-cache-ttl 7200
-    dest: ~/.gnupg/gpg-agent.conf
-    force: yes
+hosts:
+  - wafflemaker
+roles:
+  - whmcs
+tasks:
+  - name: Create user
+    user:
+      name: sbrow
+      comment: Spencer Brower
+      shell: /bin/zsh
+      # group: 20
+  - name: Configure ~/.zshrc
+    copy:
+      src: ./roles/common/files/.zshrc
+      dest: ~/.zshrc
+      force: no
+  - name: Install GPG Suite
+    package:
+      name: gpg-suite
+      state: latest
+      use: homebrew_cask
+  - name: Configure GPG Suite
+    copy:
+      content: |
+        pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+        enable-ssh-support
+        default-cache-ttl 600
+        max-cache-ttl 7200
+      dest: ~/.gnupg/gpg-agent.conf
+      force: yes
