@@ -1,11 +1,13 @@
-commands:
-  - libaacs
-  - libbdplus
-  - libbluray
-  - libdvdcss
 applications:
   - handbrake
   - makemkv
   - plex
   - plex-media-server
   - vlc
+commands:
+  - libaacs
+  - libbdplus
+  - libbluray
+  - libdvdcss
+zsh:
+  theme: blinks

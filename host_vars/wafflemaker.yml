@@ -1,8 +1,3 @@
-commands:
-  - ansible
-  - ansible-lint
-  - parallel
-  - watch
 applications:
   - cleanmymac # provider=appdmg source = 'https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg'
   - discord
@@ -17,3 +12,8 @@ applications:
   - vagrant
   - virtualbox
   - visual-studio-code
+commands:
+  - ansible
+  - ansible-lint
+  - parallel
+  - watch

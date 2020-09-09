@@ -47,14 +47,14 @@
     state: present
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
     line: "zplug '{{ item }}', from:oh-my-zsh\n"
-  loop: '{{ oh_my_zsh_plugins }}'
+  loop: '{{ zsh.oh_my_zsh_plugins }}'
 - name: Load a zsh theme if there isn't one already
   lineinfile:
     path: ~/.zshrc
     regexp: 'zplug .*, as:theme'
     state: present
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
-    line: "zplug 'themes/afowler', as:theme, from:oh-my-zsh, on:'plugins/vi_mode'\n"
+    line: "zplug 'themes/{{ zsh.theme }}', as:theme, from:oh-my-zsh, on:'plugins/vi_mode'\n"
 - name: Track zsh history
   lineinfile:
     path: ~/.zshenv
