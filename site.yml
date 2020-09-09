@@ -8,6 +8,6 @@
     - plex
     - ansible
 - name: Set up Wafflemaker
-  include_playbook: wafflemaker.yml
+  import_playbook: wafflemaker.yml
 - name: Set up Durandal
   import_playbook: durandal.yml
