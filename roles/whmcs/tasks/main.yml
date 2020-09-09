@@ -3,7 +3,7 @@
   lineinfile:
     path: ~/.zshrc
     regexp: 'alias curlx='
-    line: "alias curlx=\"curl -H 'X-Cache-Update: 1'\""
+    line: "alias curlx=\"curl -Ls -H 'X-Cache-Update: 1'\""
     state: present
 - name: Create 'wgetx' zsh alias for clearing the cache on an entire Vertical Axion site
   lineinfile:
