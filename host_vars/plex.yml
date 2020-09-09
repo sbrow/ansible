@@ -9,5 +9,4 @@ commands:
   - libbdplus
   - libbluray
   - libdvdcss
-zsh:
-  theme: blinks
+zsh_theme: blinks
