@@ -1,7 +1,5 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Set up Wafflemaker
-  import_playbook: wafflemaker.yml
 - hosts: all
   roles:
     - common
@@ -9,5 +7,7 @@
   roles:
     - plex
     - ansible
+- name: Set up Wafflemaker
+  include_playbook: wafflemaker.yml
 - name: Set up Durandal
   import_playbook: durandal.yml
