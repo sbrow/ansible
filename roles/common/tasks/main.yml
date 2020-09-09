@@ -7,3 +7,4 @@
   when: ansible_facts.os_family == 'Windows'
 - name: Setup ZSH
   import_tasks: zsh.yml
+  when: ansible_facts.os_family != 'Windows'
