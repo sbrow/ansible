@@ -18,3 +18,4 @@ commands:
   - ansible-lint
   - parallel
   - watch
+zsh_theme: af-magic
