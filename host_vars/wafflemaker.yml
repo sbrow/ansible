@@ -4,12 +4,13 @@ applications:
   - firefox
   - flux
   - joplin
-  - lastpass
+  # - lastpass Install manually, cask version sucks
   - shiftit
   - skype
   - steam
   - teamviewer
   - vagrant
+  - vagrant-manager
   - virtualbox
   - visual-studio-code
 commands:
