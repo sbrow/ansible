@@ -1,10 +1,10 @@
 ---
-- name: Setup Macs
+- name: Setup Mac machines
   import_tasks: mac.yml
   when: ansible_facts.os_family == 'Darwin'
-- name: Setup Windows
+- name: Setup Windows machines
   import_tasks: windows.yml
   when: ansible_facts.os_family == 'Windows'
-- name: Setup ZSH
+- name: Setup Z Shell on Unix machines
   import_tasks: zsh.yml
   when: ansible_facts.os_family != 'Windows'
