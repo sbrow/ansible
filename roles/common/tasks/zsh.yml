@@ -76,4 +76,5 @@
     line: HISTFILE=~/.history
     insertafter: SAVEHIST=
     state: present
+    create: yes
 # TODO:  setopt HIST_IGNORE_DUPS
