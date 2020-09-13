@@ -1,7 +1,7 @@
-#/usr/bin/env ansible-playbook
+#!/usr/bin/env ansible-playbook
 ---
 - hosts:
-  - wafflemaker
+    - wafflemaker
   roles:
     - whmcs
   tasks:
@@ -30,3 +30,9 @@
           max-cache-ttl 7200
         dest: ~/.gnupg/gpg-agent.conf
         force: yes
+    - name: Create "wol-durandal" alias for waking up Durandal
+      lineinfile:
+        path: ~/.zshrc
+        regexp: '^alias wol-durandal'
+        line: alias wol-durandal='wakeonlan 70:85:C2:64:13:92'
+        state: present

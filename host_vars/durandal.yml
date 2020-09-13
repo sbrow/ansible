@@ -6,4 +6,5 @@ applications:
   - firefox
   - f.lux
   - joplin
+  - vagrant-manager
   - vscode
