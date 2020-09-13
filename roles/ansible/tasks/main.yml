@@ -1,7 +1,7 @@
 ---
 - name: Use smart gathering in ansible
   lineinfile:
-    path: /etc/ansible/ansible.config
+    path: /etc/ansible/ansible.cfg
     line: gathering = smart
     state: present
     create: yes
