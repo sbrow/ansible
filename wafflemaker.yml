@@ -11,6 +11,10 @@
         comment: Spencer Brower
         shell: /bin/zsh
         # group: 20
+    - name: Re-map Caps Lock to Escape
+      script:
+        cmd: caps_lock_escape.scpt
+        executable: /usr/bin/osascript
     - name: Configure ~/.zshrc
       copy:
         src: ./roles/common/files/.zshrc
