@@ -48,6 +48,11 @@
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
     line: "zplug '{{ item }}', from:oh-my-zsh\n"
   loop: '{{ oh_my_zsh_plugins }}'
+- name: Load wp-cli plugin when wp-cli is installed
+  lineinfile:
+    path: ~/.zshrc
+    regexp: zplug ['"]plugins/wp['"]
+    line: "zplug 'plugins/wp', defer: 2, if:'[[ command -z wp ]]'"
 - name: Load a zsh theme
   lineinfile:
     path: ~/.zshrc
