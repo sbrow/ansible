@@ -26,7 +26,7 @@
   cron:
     name: /etc/ansible/site.yml
     user: root
-    job: ansible-playbook /etc/ansible/site.yml >> /dev/null 2>&1
+    job: /usr/local/bin/ansible-playbook /etc/ansible/site.yml >> /dev/null 2>&1
     minute: '0'
     hour: 7-19
     state: present
