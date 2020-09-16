@@ -10,6 +10,7 @@
     regexp: 'Include (~.ssh/)?config.d/\*'
     line: Include ~/.ssh/config.d/*
     insertbefore: BOF
+    create: yes
 - name: Create config file for local network
   copy:
     src: local
