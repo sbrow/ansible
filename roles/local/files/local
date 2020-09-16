@@ -1,0 +1,12 @@
+Host durandal
+    User Spencer
+    HostName durandal.local
+Host homestead
+    User vagrant
+    HostName vagrant.local
+Host plex
+    User plex
+    HostName plex.local
+Host wafflemaker
+    User sbrow
+    HostName wafflemaker.local

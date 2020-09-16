@@ -3,6 +3,9 @@
 - hosts: all
   roles:
     - common
+- hosts: local
+  roles:
+    - local
 - hosts: plex
   roles:
     - plex

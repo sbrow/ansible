@@ -1,0 +1,17 @@
+---
+- name: Create ~/.ssh/config.d
+  file:
+    path: ~/.ssh/config.d
+    owner: '{{ ansible_user }}'
+    state: directory
+- name: Include ~/.ssh/config.d in main config file
+  lineinfile:
+    path: ~/.ssh/config
+    regexp: 'Include (~.ssh/)?config.d/\*'
+    line: Include ~/.ssh/config.d/*
+    insertbefore: BOF
+- name: Create config file for local network
+  copy:
+    src: local
+    dest: ~/.ssh/config.d/local
+    force: yes
