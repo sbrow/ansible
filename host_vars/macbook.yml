@@ -1,5 +1,5 @@
 applications:
-  - cleanmymac # provider=appdmg source = 'https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg'
+  - cleanmymac
   - discord
   - firefox
   - flux
@@ -16,6 +16,7 @@ applications:
 commands:
   - ansible
   - ansible-lint
+  - gnu-sed
   - parallel
   - watch
 zsh_theme: af-magic
