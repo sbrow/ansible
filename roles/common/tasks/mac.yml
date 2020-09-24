@@ -5,11 +5,9 @@
     name: '{{ item }}'
     state: latest
     update_homebrew: yes
-    upgrade_all: yes
   loop: '{{ commands }}'
 - name: Install applications on Macs
   homebrew_cask:
     name: '{{ item }}'
-    state: present
-    upgrade_all: yes
+    state: upgraded
   loop: '{{ applications }}'
