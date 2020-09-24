@@ -1,4 +1,5 @@
 ---
+# TODO: figure out how to install homebrew
 - name: Install commands on Macs
   homebrew:
     name: '{{ commands }}'

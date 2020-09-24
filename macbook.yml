@@ -11,13 +11,6 @@
         comment: Spencer Brower
         shell: /bin/zsh
         # group: 20
-    - name: Enable Touch ID in Terminal
-      lineinfile:
-        path: /etc/pam.d/sudo
-        regexp: auth sufficient pam_tid.so
-        line: auth sufficient pam_tid.so
-        insertbefore: BOF
-      become: yes
     - name: Re-map Caps Lock to Escape
       script:
         cmd: caps_lock_escape.scpt
