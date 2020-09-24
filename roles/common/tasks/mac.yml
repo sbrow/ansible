@@ -2,12 +2,14 @@
 # TODO: figure out how to install homebrew
 - name: Install commands on Macs
   homebrew:
-    name: '{{ commands }}'
+    name: '{{ item }}'
     state: latest
     update_homebrew: yes
     upgrade_all: yes
+    loop: '{{ commands }}'
 - name: Install applications on Macs
   homebrew_cask:
-    name: '{{ applications }}'
+    name: '{{ item }}'
     state: latest
     upgrade_all: yes
+  loop: '{{ applications }}'
