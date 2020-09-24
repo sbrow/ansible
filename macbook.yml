@@ -26,6 +26,10 @@
         name: gpg-suite
         state: latest
         use: homebrew_cask
+    - name: Create ~/.gnupg
+      file:
+        path: ~/.gnupg
+        state: directory
     - name: Configure GPG Suite
       copy:
         content: |
