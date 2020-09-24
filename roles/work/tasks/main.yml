@@ -1,0 +1,5 @@
+---
+- name: Create git.verticalaxion.com Directory
+  file:
+    path: ~/git.verticalaxion.com
+    state: directory

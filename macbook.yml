@@ -4,6 +4,7 @@
     - macbook
   roles:
     - whmcs
+    - work
   tasks:
     - name: Create user
       user:
