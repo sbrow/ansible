@@ -10,7 +10,7 @@
   roles:
     - plex
     - ansible
-- name: Set up Wafflemaker
-  import_playbook: wafflemaker.yml
+- name: Set up Macbook
+  import_playbook: macbook.yml
 - name: Set up Durandal
   import_playbook: durandal.yml
