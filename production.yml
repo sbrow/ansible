@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts:
+    - production
+  tasks:
+    - name: Install zsh
+      package:
+        name: zsh
+        state: present
+      become: yes
