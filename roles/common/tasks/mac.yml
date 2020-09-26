@@ -11,3 +11,9 @@
     name: '{{ item }}'
     state: upgraded
   loop: '{{ applications }}'
+- name: Enable key repeat on Macs
+  osx_defaults:
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+    state: present
