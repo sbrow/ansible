@@ -57,6 +57,7 @@
       unarchive:
         src: https://github.com/peterklijn/hammerspoon-shiftit/raw/master/Spoons/ShiftIt.spoon.zip
         dest: ~/.hammerspoon/Spoons
+        remote_src: yes
         creates: ~/.hammerspoon/Spoons/ShiftIt.spoon
     - name: Install hammerspoon config
       copy:
