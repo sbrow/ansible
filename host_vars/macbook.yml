@@ -1,6 +1,7 @@
 applications:
   - cleanmymac
   - discord
+  - filebot # Paid for it, might as well have it.
   - firefox
   - flux
   - hammerspoon
