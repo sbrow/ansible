@@ -45,3 +45,21 @@
         regexp: '^alias wol-durandal'
         line: alias wol-durandal='wakeonlan 70:85:C2:64:13:92'
         state: present
+    - name: Create ~/.hammerspoon directory
+      file:
+        path: ~/.hammerspoon
+        state: directory
+    - name: Create ~/.hammerspoon/Spoons directory
+      file:
+        path: ~/.hammerspoon/Spoons
+        state: directory
+    - name: Install "Shiftit" spoon
+      unarchive:
+        src: https://github.com/peterklijn/hammerspoon-shiftit/raw/master/Spoons/ShiftIt.spoon.zip
+        dest: ~/.hammerspoon/Spoons
+        creates: ~/.hammerspoon/Spoons/ShiftIt.spoon
+    - name: Install hammerspoon config
+      copy:
+        src: hammerspoon/init.lua
+        dest: ~/.hammerspoon/init.lua
+        force: true

@@ -3,9 +3,9 @@ applications:
   - discord
   - firefox
   - flux
+  - hammerspoon
   - joplin
   # - lastpass Install manually, cask version sucks
-  - shiftit
   - skype
   - steam
   - teamviewer
