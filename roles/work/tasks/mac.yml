@@ -1,0 +1,37 @@
+---
+- name: Set listen address in dnsmasq.conf
+  lineinfile:
+    path: /usr/local/etc/dnsmasq.conf
+    regexp: '#?listen-address=.*'
+    line: listen-address=127.0.0.1
+    state: present
+- name: Configure dnsmasq to read from the dnsmasq.d directory.
+  lineinfile:
+    path: /usr/local/etc/dnsmasq.conf
+    regexp: '#?conf-dir=/usr/local/etc/dnsmasq\.d(\*\.conf)?$'
+    line: conf-dir=/usr/local/etc/dnsmasq.d/,*.conf
+    state: present
+- name: Configure Homestead as a nameserver.
+  lineinfile:
+    path: /etc/resolv.conf
+    regexp: nameserver 127.0.0.1
+    line:  nameserver 127.0.0.1
+    insertafter: EOF
+    state: present
+  become: yes
+- name: Resolve all '*.test' domains to Homestead.
+  copy:
+    dest: /usr/local/etc/dnsmasq.d/test.conf
+    content: |
+      address=/test/192.168.10.10
+      listen-address=127.0.0.1
+- name: Create /etc/resolver directory
+  file:
+    path: /etc/resolver
+    state: directory
+  become: yes
+- name: Create resolver file for '*.test' domains
+  copy:
+    dest: /etc/resolver/test
+    content: nameserver 127.0.0.1
+  become: yes

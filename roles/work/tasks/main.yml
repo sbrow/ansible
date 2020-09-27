@@ -3,3 +3,6 @@
   file:
     path: ~/git.verticalaxion.com
     state: directory
+- name: Setup DNS for homestead on Macs
+  import_tasks: mac.yml
+  when: ansible_facts.os_family == 'Darwin'

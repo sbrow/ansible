@@ -17,6 +17,7 @@ applications:
 commands:
   - ansible
   - ansible-lint
+  - dnsmasq # Needed for homestead.
   - gnu-sed
   - parallel
   - watch
