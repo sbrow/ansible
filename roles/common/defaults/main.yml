@@ -3,5 +3,6 @@ oh_my_zsh_plugins:
   - lib/spectrum
   - lib/prompt_info_functions
   - plugins/git
+  - plugins/sudo
   - plugins/vi_mode
   - plugins/zsh_reload
