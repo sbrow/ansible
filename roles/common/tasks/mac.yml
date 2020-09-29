@@ -17,3 +17,8 @@
     type: bool
     value: false
     state: present
+- name: Create quick action for VS Code
+  copy:
+    src: Open In VS Code.workflow
+    dest: ~/Library/Services/
+  when: '"visual-studio-code" in applications'
