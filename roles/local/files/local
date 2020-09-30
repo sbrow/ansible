@@ -3,7 +3,7 @@ Host durandal
     HostName durandal.local
 Host homestead
     User vagrant
-    HostName vagrant.local
+    HostName homestead.local
 Host plex
     User plex
     HostName plex.local
