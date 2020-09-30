@@ -7,6 +7,7 @@ applications:
   - hammerspoon
   - joplin
   # - lastpass Install manually, cask version sucks
+  - plex
   - skype
   - steam
   - teamviewer
@@ -19,6 +20,7 @@ commands:
   - ansible-lint
   - dnsmasq # Needed for homestead.
   - gnu-sed
+  - mysql-client
   - parallel
   - watch
 zsh_theme: af-magic
