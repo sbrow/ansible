@@ -23,4 +23,5 @@ commands:
   - mysql-client
   - parallel
   - watch
+  - yarn # phpstorm can't do remote node
 zsh_theme: af-magic
