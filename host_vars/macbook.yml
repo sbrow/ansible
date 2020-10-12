@@ -5,6 +5,7 @@ applications:
   - firefox
   - flux
   - hammerspoon
+  - homebrew/cask-drivers/logitech-g-hub
   - joplin
   # - lastpass Install manually, cask version sucks
   - plex
@@ -18,6 +19,7 @@ applications:
 commands:
   - ansible
   - ansible-lint
+  - disk-drill
   - dnsmasq # Needed for homestead.
   - gnu-sed
   - mysql-client
