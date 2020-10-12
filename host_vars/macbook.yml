@@ -1,6 +1,7 @@
 applications:
   - cleanmymac
   - discord
+  - disk-drill
   - filebot # Paid for it, might as well have it.
   - firefox
   - flux
@@ -19,7 +20,6 @@ applications:
 commands:
   - ansible
   - ansible-lint
-  - disk-drill
   - dnsmasq # Needed for homestead.
   - gnu-sed
   - mysql-client
