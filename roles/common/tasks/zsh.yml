@@ -18,6 +18,7 @@
 - name: Allow zplug to manage itself
   lineinfile:
     path: ~/.zshrc
+    create: yes
     regexp: 'zplug (''zplug/zplug''|"zplug/zplug")'
     state: present
     insertafter: '(?<=source ~/.zplug/init.zsh)^$'
@@ -25,6 +26,7 @@
 - name: Install and load zsh plugins in ~/.zshrc
   blockinfile:
     path: ~/.zshrc
+    create: yes
     state: present
     insertafter: EOF
     block: |
@@ -43,6 +45,7 @@
 - name: Load 'oh-my-zsh' plugins
   lineinfile:
     path: ~/.zshrc
+    create: yes
     regexp: 'zplug ([''"]{{ item }}[''"])'
     state: present
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
@@ -51,11 +54,13 @@
 - name: Load wp-cli plugin when wp-cli is installed
   lineinfile:
     path: ~/.zshrc
+    create: yes
     regexp: zplug ['"]plugins/wp['"]
     line: "zplug 'plugins/wp', defer: 2, if:'[[ command -z wp ]]'"
 - name: Load a zsh theme
   lineinfile:
     path: ~/.zshrc
+    create: yes
     regexp: 'zplug .*, as:theme'
     state: present
     insertbefore: '# BEGIN ANSIBLE MANAGED BLOCK'
@@ -63,13 +68,14 @@
 - name: Track zsh history
   lineinfile:
     path: ~/.zshenv
+    create: yes
     regexp: HISTSIZE=
     line: HISTSIZE=1000
     state: present
-    create: yes
 - name: Save zsh history
   lineinfile:
     path: ~/.zshenv
+    create: yes
     regexp: SAVEHIST=
     line: SAVEHIST=1000
     insertafter: HISTSIZE=
@@ -77,9 +83,9 @@
 - name: Set zsh history file location
   lineinfile:
     path: ~/.zshenv
+    create: yes
     regexp: HISTFILE=
     line: HISTFILE=~/.history
     insertafter: SAVEHIST=
     state: present
-    create: yes
 # TODO:  setopt HIST_IGNORE_DUPS
