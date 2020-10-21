@@ -13,6 +13,7 @@ applications:
   - skype
   - steam
   - teamviewer
+  - tor-browser
   - vagrant
   - vagrant-manager
   - virtualbox
