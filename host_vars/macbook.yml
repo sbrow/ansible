@@ -5,6 +5,7 @@ applications:
   - filebot # Paid for it, might as well have it.
   - firefox
   - flux
+  - go
   - hammerspoon
   - homebrew/cask-drivers/logitech-g-hub
   - joplin
