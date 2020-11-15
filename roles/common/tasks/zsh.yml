@@ -4,13 +4,13 @@
     name: zsh
     state: latest
   become: yes
-  when: ansible_facts.os_family = 'Debian'
+  when: ansible_facts.os_family == 'Debian'
 - name: Remove zplug on Debian systems
   package:
     name: zplug
     state: absent
   become: yes
-  when: ansible_facts.os_family = 'Debian'
+  when: ansible_facts.os_family == 'Debian'
 - name: Don't use package managed version of zplug
   package:
     name: zplug
