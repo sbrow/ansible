@@ -4,9 +4,23 @@ Host durandal
 Host homestead
     User vagrant
     HostName homestead.local
+    ProxyCommand ssh spencer@macbook.local nc %h %p
 Host plex
     User plex
     HostName plex.local
 Host wafflemaker
+    User sbrow
+    HostName wafflemaker.local
+Host durandal.local
+    User Spencer
+    HostName durandal.local
+Host homestead.local
+    User vagrant
+    HostName homestead.local
+    ProxyCommand ssh spencer@macbook.local nc %h %p
+Host plex.local
+    User plex
+    HostName plex.local
+Host wafflemaker.local
     User sbrow
     HostName wafflemaker.local
