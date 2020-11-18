@@ -6,3 +6,8 @@
 - name: Setup DNS for homestead on Macs
   import_tasks: mac.yml
   when: ansible_facts.os_family == 'Darwin'
+- name: Create ssh config file for production computers
+  copy:
+    src: production
+    dest: ~/.ssh/config.d/production
+    force: yes
