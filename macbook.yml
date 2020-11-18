@@ -64,3 +64,8 @@
         src: hammerspoon/init.lua
         dest: ~/.hammerspoon/init.lua
         force: true
+    - name: Create config file for production credentials
+      copy:
+        src: production
+        dest: ~/.ssh/config.d/production
+        force: yes
