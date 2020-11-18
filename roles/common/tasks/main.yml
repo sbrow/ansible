@@ -8,3 +8,13 @@
 - name: Setup Z Shell on Unix machines
   import_tasks: zsh.yml
   when: ansible_facts.os_family != 'Windows'
+- name: Get the path of the PhpStorm script, if installed.
+  command: /usr/bin/env which phpstorm
+  register: phpstorm_installed
+- name: Install .ideavimrc on systems that have PhpStorm installed.
+  copy:
+    src: common/files/.ideavimrc
+    dest: ~/.ideavimrc
+    create: yes
+    force: yes
+  when: "phpstorm_installed.stdout != ''"

@@ -1,0 +1,7 @@
+" Enable cs'"
+set surround
+" Improves quality of J command
+set ideajoin
+" Sync bookmarks between vim and IJ
+set ideamarks
+map gb :action SelectNextOccurrence<CR>
