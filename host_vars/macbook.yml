@@ -10,6 +10,7 @@ applications:
   - joplin
   # - lastpass Install manually, cask version sucks
   - plex
+  - postman
   - skype
   - steam
   - teamviewer
