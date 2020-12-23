@@ -28,6 +28,7 @@ commands:
   - mysql-client
   - parallel
   - php-cs-fixer # phpstorm can't use remote version.
+  - wakeonlan
   - watch
   - yarn # phpstorm can't do remote node
 zsh_theme: af-magic
