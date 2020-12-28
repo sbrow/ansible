@@ -8,8 +8,12 @@
     - local
 - hosts: plex
   roles:
+    #- ansible
     - handbrake
+- hosts: pi
+  roles:
     - ansible
+    - plex
 - name: Set up Macbook
   import_playbook: macbook.yml
 - name: Set up Durandal

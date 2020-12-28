@@ -1,4 +1,9 @@
 ---
+- name: Install ansible
+  package: 
+    name: ansible
+    state: present
+  become: yes
 - name: Use smart gathering in ansible
   lineinfile:
     path: /etc/ansible/ansible.cfg

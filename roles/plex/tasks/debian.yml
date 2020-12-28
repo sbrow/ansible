@@ -14,7 +14,7 @@
     url: https://downloads.plex.tv/plex-keys/PlexSign.key
     state: present
   become: yes
-- name: Install Plex Media Server
+- name: Install and update Plex Media Server
   apt:
     name: plexmediaserver
     state: latest
