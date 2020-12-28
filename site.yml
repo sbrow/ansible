@@ -8,7 +8,7 @@
     - local
 - hosts: plex
   roles:
-    - plex
+    - handbrake
     - ansible
 - name: Set up Macbook
   import_playbook: macbook.yml
