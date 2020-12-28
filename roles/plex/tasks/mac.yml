@@ -1,0 +1,8 @@
+---
+- name: Install Plex Media Server
+  homebrew_cask:
+    name: plex-media-server
+    state: present
+- name: Add Plex Media Server to the Login Items and hide it.
+  command:
+    cmd: 'osascript -e ''tell application "System Events" to make login item at end with properties {name: "Plex Media Server",path:"/Applications/Plex Media Server.app", hidden:true}'''

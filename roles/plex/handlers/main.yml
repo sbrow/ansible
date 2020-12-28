@@ -1,0 +1,4 @@
+- name: Refresh fstab
+  command: mount -a
+  become: yes
+  when: ansible_facts.os_family == 'Debian'

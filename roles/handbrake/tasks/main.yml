@@ -1,13 +1,4 @@
 ---
-- name: Create plex user
-  become: yes
-  user:
-    name: plex
-    shell: /bin/zsh
-- name: Untap loginitems
-  homebrew_tap:
-    name: OJFord/formulae
-    state: absent
 - name: Link AACS library for Handbrake
   file:
     src: /Applications/MakeMKV.app/Contents/lib/libmmbd_new.dylib
@@ -18,6 +9,10 @@
     src: /Applications/MakeMKV.app/Contents/lib/libmmbd_new.dylib
     dest: ~/lib/libbdplus.dylib
     state: link
+- name: Untap loginitems # Ensures we don't have this script installed, (See next task).
+  homebrew_tap:
+    name: OJFord/formulae
+    state: absent
 - name: Add Plex Media Server to the Login Items and hide it.
   command:
     cmd: 'osascript -e ''tell application "System Events" to make login item at end with properties {name: "Plex Media Server",path:"/Applications/Plex Media Server.app", hidden:true}'''

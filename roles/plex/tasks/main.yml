@@ -1,0 +1,7 @@
+---
+- name: Setup Debian machines
+  import_tasks: debian.yml
+  when: ansible_facts.os_family == 'Debian'
+- name: Setup Mac machines
+  import_tasks: mac.yml
+  when: ansible_facts.os_family == 'Darwin'

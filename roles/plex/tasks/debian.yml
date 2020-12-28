@@ -1,0 +1,43 @@
+# Tasks specific to Debian based Linux systems.
+---
+# - name: Install Plex Media Server on Debian systems (without updating the package repository)
+#   apt:
+#     deb: https://downloads.plex.tv/plex-media-server-new/1.21.1.3830-6c22540d5/debian/plexmediaserver_1.21.1.3830-6c22540d5_armhf.deb
+#   become: yes
+- name: Add Plex to apt package repository
+  apt_repository:
+    repo: deb https://downloads.plex.tv/repo/deb public main
+    state: present
+  become: yes
+- name: Add Plex to apt keys
+  apt_key:
+    url: https://downloads.plex.tv/plex-keys/PlexSign.key
+    state: present
+  become: yes
+- name: Install Plex Media Server
+  apt:
+    name: plexmediaserver
+    state: latest
+  become: yes
+- name: Enable the Plex service
+  service:
+    name: plexmediaserver
+    enabled: yes
+    state: started
+- name: Create mount folder if it doesn't exist
+  file:
+    path: /mnt/Shared 
+    state: directory
+  become: yes
+- name: Ensure the NAS Drive mounts at boot
+  lineinfile:
+    path: /etc/fstab
+    regexp: 10.0.1.1
+    line: "//10.0.1.1/Data/Shared\t/mnt/Shared\tcifs\tpass={{ smb_password }},sec=ntlm,vers=1.0\t0\t0"
+    state: present
+    insertafter: EOF
+  become: yes
+  notify:
+   - Refresh fstab
+
+  
