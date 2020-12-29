@@ -5,12 +5,15 @@ Host homestead
     User vagrant
     HostName homestead.local
     ProxyCommand ssh spencer@macbook.local nc %h %p
+Host macbook
+    User sbrow
+    HostName macbook.local
+Host rpi
+    User pi
+    HostName raspberrypi
 Host plex
     User plex
     HostName plex.local
-Host wafflemaker
-    User sbrow
-    HostName wafflemaker.local
 Host durandal.local
     User Spencer
     HostName durandal.local
@@ -18,9 +21,12 @@ Host homestead.local
     User vagrant
     HostName homestead.local
     ProxyCommand ssh spencer@macbook.local nc %h %p
+Host macbook.local
+    User sbrow
+    HostName wafflemaker.local
 Host plex.local
     User plex
     HostName plex.local
-Host wafflemaker.local
-    User sbrow
-    HostName wafflemaker.local
+Host raspberrypi.local
+    User pi
+    HostName raspberrypi.local
