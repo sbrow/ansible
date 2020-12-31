@@ -39,5 +39,11 @@
   become: yes
   notify:
    - Refresh fstab
-
-  
+- name: Mount the network drive every so often (once a day)
+  cron:
+    name: mount time capsule
+    state: absent
+    hour: '9'
+    job: mount -a
+    user: root
+  become: yes
