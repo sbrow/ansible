@@ -10,7 +10,7 @@ Host macbook
     HostName macbook.local
 Host rpi
     User pi
-    HostName raspberrypi
+    HostName raspberrypi.local
 Host plex
     User plex
     HostName plex.local
