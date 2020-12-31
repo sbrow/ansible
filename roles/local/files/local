@@ -6,7 +6,7 @@ Host homestead
     HostName homestead.local
     ProxyCommand ssh spencer@macbook.local nc %h %p
 Host macbook
-    User sbrow
+    User spencer
     HostName macbook.local
 Host rpi
     User pi
@@ -22,7 +22,7 @@ Host homestead.local
     HostName homestead.local
     ProxyCommand ssh spencer@macbook.local nc %h %p
 Host macbook.local
-    User sbrow
+    User spencer
     HostName macbook.local
 Host plex.local
     User plex
