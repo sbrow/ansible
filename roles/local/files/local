@@ -23,7 +23,7 @@ Host homestead.local
     ProxyCommand ssh spencer@macbook.local nc %h %p
 Host macbook.local
     User sbrow
-    HostName wafflemaker.local
+    HostName macbook.local
 Host plex.local
     User plex
     HostName plex.local
