@@ -1,0 +1,19 @@
+---
+- name: Create ~/.ssh/config.d on Windows
+  win_file:
+    path: ~/.ssh/config.d
+    owner: '{{ ansible_user }}'
+    state: directory
+  when: ansible_os_family == 'Windows'
+- name: Include ~/.ssh/config.d in main config file
+  win_lineinfile:
+    path: ~/.ssh/config
+    regexp: 'Include (~.ssh/)?config.d/\*'
+    line: Include ~/.ssh/config.d/*
+    insertbefore: BOF
+    create: yes
+- name: Create config file for local network
+  win_copy:
+    src: local
+    dest: ~/.ssh/config.d/local
+    force: yes

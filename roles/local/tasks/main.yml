@@ -1,34 +1,7 @@
 ---
-- name: Create ~/.ssh/config.d
-  file:
-    path: ~/.ssh/config.d
-    owner: '{{ ansible_user }}'
-    state: directory
+- name: Configure SSH on Unix systems
+  import_tasks: unix.yml
   when: ansible_os_family != 'Windows'
-- name: Create ~/.ssh/config.d on Windows
-  win_file:
-    path: ~/.ssh/config.d
-    owner: '{{ ansible_user }}'
-    state: directory
+- name: Configure SSH on Windows systems
+  import_tasks: windows.yml
   when: ansible_os_family == 'Windows'
-- name: Include ~/.ssh/config.d in main config file
-  lineinfile:
-    path: ~/.ssh/config
-    regexp: 'Include (~.ssh/)?config.d/\*'
-    line: Include ~/.ssh/config.d/*
-    insertbefore: BOF
-    create: yes
-  when: ansible_os_family != 'Windows'
-- name: Include ~/.ssh/config.d in main config file
-  lineinfile:
-    path: ~/.ssh/config
-    regexp: 'Include (~.ssh/)?config.d/\*'
-    line: Include ~/.ssh/config.d/*
-    insertbefore: BOF
-    create: yes
-  when: ansible_os_family == 'Windows'
-- name: Create config file for local network
-  copy:
-    src: local
-    dest: ~/.ssh/config.d/local
-    force: yes
