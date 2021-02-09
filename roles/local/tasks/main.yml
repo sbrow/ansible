@@ -4,6 +4,13 @@
     path: ~/.ssh/config.d
     owner: '{{ ansible_user }}'
     state: directory
+  when: ansible_os_family != 'Windows'
+- name: Create ~/.ssh/config.d on Windows
+  win_file:
+    path: ~/.ssh/config.d
+    owner: '{{ ansible_user }}'
+    state: directory
+  when: ansible_os_family == 'Windows'
 - name: Include ~/.ssh/config.d in main config file
   lineinfile:
     path: ~/.ssh/config
